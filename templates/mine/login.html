@@ -1,0 +1,36 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block title %}登录{% endblock title %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'mine/css/login.css' %}">
+{% endblock link %}
+{% block script %}
+<script type="application/javascript" src="{% static 'mine/js/login.js' %}"></script>
+{% endblock script %}
+
+
+
+{% block main %}
+<div id="loginDiv">
+    <a href="/mine/" id="fanh"><span class="glyphicon glyphicon-menu-left"></span></a>
+    <span id="load">欢迎登陆</span>
+    <hr/>
+
+    <div id="box">
+        <form action="/login/?from={{ path }}" method="post">
+            {% csrf_token %}
+            <div id="form-group">
+                <input value="" id="phone" type="text" class="form-control" placeholder="USERNAME" name="phone">
+            </div>
+            <div id="form-group">
+
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="验证码" name="verifycode">
+            </div>
+            <button id="smsBtn" type="button" class="btn btn-default">发送验证码</button>
+            <button type="submit" class="btn btn-default" id="submit">登陆</button>
+        </form>
+    </div>
+</div>
+    <footer></footer>
+{% endblock main %}

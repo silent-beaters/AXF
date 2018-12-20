@@ -1,0 +1,114 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block title %}我的{% endblock title %}
+
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mine/css/mine.css' %}">
+{% endblock link %}
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'mine/js/mine.js' %}"></script>
+{% endblock script %}
+
+{% block main %}
+<div id="mineDiv">
+        <section class="fixed">
+            {% if user.img  %}
+                <img id="headerImage" src="{{ user.img }}">
+            {% else %}
+                <span class="glyphicon glyphicon-user"></span>
+            {% endif %}
+            <p>用户名:<a href="/login/?from=mine">{{ phone|default:"未登录" }}</a></p>
+            <a id="regis" href="#"></a>
+        </section>
+
+        <section class="mine">
+            <div id="dingdan">
+                <span><a href="/havePay/">我的订单</a></span>
+                <a href="#">查看全部订单</a>
+            </div>
+
+            <nav id="nav">
+                <ul>
+                    <li>
+                        <a href="/waitPay/">
+                            <dl>
+                                <dt><span class="glyphicon glyphicon-usd"></span></dt>
+                                <dd>未支付<span class="badge">{{ money1 }}</span></dd>
+                            </dl>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/havePay/">
+                            <dl>
+                                <dt><span class="glyphicon glyphicon-envelope"></span></dt>
+                                <dd>已支付<span class="badge">{{ money2 }}</span></dd>
+                            </dl>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <dl>
+                                <dt><span class="glyphicon glyphicon-pencil"></span></dt>
+                                <dd>待评价</dd>
+                            </dl>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <dl>
+                                <dt><span class="glyphicon glyphicon-retweet"></span></dt>
+                                <dd>退款/售后</dd>
+                            </dl>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <menu>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <dl>
+                                <dt><span class="glyphicon glyphicon-bullhorn"></span></dt>
+                                <dd>积分商城</dd>
+                            </dl>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <dl>
+                                <dt><span class="glyphicon glyphicon-credit-card"></span></dt>
+                                <dd>优惠券</dd>
+                            </dl>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/showAddress/?from=showAddress">
+                            <dl>
+                                <dt><span class="glyphicon glyphicon-import"></span></dt>
+                                <dd>收货地址</dd>
+                            </dl>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <dl>
+                                <dt><span class="glyphicon glyphicon-phone-alt"></span></dt>
+                                <dd>客服/反馈</dd>
+                            </dl>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <dl>
+                                <dt><span class="glyphicon glyphicon-asterisk"></span></dt>
+                                <dd>关于我们</dd>
+                            </dl>
+                        </a>
+                    </li>
+                </ul>
+            </menu>
+            <p><a href="/quit/">退出当前账号</a></p>
+        </section>
+    </div>
+{% endblock main %}

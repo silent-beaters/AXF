@@ -1,0 +1,39 @@
+#showAddressDiv {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+  background: whitesmoke;
+  overflow: hidden;
+  margin-top: 1.3rem;
+}
+
+#showAddressDiv>a:first-child{
+  position: fixed;
+  margin: 15px 0 0 10px;
+}
+#showAddressDiv>div ul>li>div:last-child p{
+  background-color: whitesmoke;
+  height: 0.65rem;
+  font-size:16px;
+  float: right;
+  text-align: right;
+  margin-top: -1.6rem;
+  margin-right: 1rem;
+}
+#showAddressDiv>div ul>li{
+  border: 4px solid whitesmoke;
+  margin: 5px 5px;
+}
+#showAddressDiv>a:last-child{
+  width: 6.5rem;
+  font-size: 0.52rem;
+  background-color: tomato;
+  height: 1.25rem;
+  border-radius: 30px;
+  text-align: center;
+  margin: 10px 0 0 55px;
+  padding-top: 13px;
+}
+
+

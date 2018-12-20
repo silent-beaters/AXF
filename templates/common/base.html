@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>{% block title %}{% endblock title %}</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'common/css/reset.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'common/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'common/css/swiper.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'common/css/base.css' %}">
+    {% block link %}{% endblock link %}
+
+    <script type="text/javascript" src="{% static 'common/js/jquery-3.1.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'common/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'common/js/swiper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'common/js/base.js' %}"></script>
+    {% block script %}{% endblock script %}
+</head>
+<body>
+    <header>{% block h4 %}{% endblock h4 %}</header>
+    <div>
+        {% block main %}{% endblock main %}
+    </div>
+    <footer class="container">
+        <div class="row">
+            <div class="col-xs-3">
+                <a href="/home/">
+                    <dl>
+                        <dt><span id="home"></span></dt>
+                        <dd>首页</dd>
+                    </dl>
+                </a>
+            </div>
+            <div class="col-xs-3">
+                <a href="/market/103614/0/0/">
+                    <dl>
+                        <dt><span id="market"></span></dt>
+                        <dd>闪送超市</dd>
+                    </dl>
+                </a>
+            </div>
+            <div class="col-xs-3">
+                <a href="/cart/?from=cart&flag=1">
+                    <dl>
+                        <dt><span id="cart"></span></dt>
+                        <dd>购物车</dd>
+                    </dl>
+                </a>
+            </div>
+            <div class="col-xs-3">
+                <a href="/mine/">
+                    <dl>
+                        <dt><span id="mine"></span></dt>
+                        <dd>我的</dd>
+                    </dl>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

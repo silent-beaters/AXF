@@ -1,0 +1,35 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block title %}待支付{% endblock title %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'mine/css/waitPay.css' %}">
+{% endblock link %}
+{% block script %}
+<script type="application/javascript" src="{% static 'mine/js/waitPay.js' %}"></script>
+{% endblock script %}
+
+
+
+{% block main %}
+<div id="waitPayDiv">
+    <a href="/mine/" class="glyphicon glyphicon-menu-left">返回</a>
+    <hr/>
+
+    <div>
+        <ul>
+            {% for item in orders %}
+            <li style="border-bottom: solid 1px red">
+                <div>
+                    <p>{{ item.orderid }}</p>
+                    <p>{{ item.price }}</p>
+                </div>
+                <div><a href="/pay/?orderid={{ item.orderid }}">支付</a></div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+</div>
+{% endblock main %}

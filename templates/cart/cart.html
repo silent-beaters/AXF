@@ -1,0 +1,60 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block title %}购物车{% endblock title %}
+
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'cart/css/cart.css' %}">
+{% endblock link %}
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'cart/js/cart.js' %}"></script>
+{% endblock script %}
+{% block h4 %}购物车{% endblock h4 %}
+{% block main %}
+    <div id="cartDiv">
+        <section class="full">
+            <section>
+                <menu>
+                    <ul>
+                        {% for item in carts%}
+                        <li class="menuList">
+                            <div class="confirm">
+                                <span class="ischose" cartid="{{ item.id }}">
+                                    <span id="cart{{ item.id }}">
+                                        {% if item.isChoice %}
+                                            √
+                                        {% endif %}
+                                    </span>
+                                </span>
+                            </div>
+                            <a href="#">
+                                <img src="{{ item.product.img }}"/>
+                                <p>{{ item.product.longName }}</p>
+                                <span>{{ item.product.price }}</span>
+                                <span>-----{{ item.num }}</span>
+                            </a>
+                        </li>
+                        {% endfor %}
+
+                        <li class="payTheBill">
+                            <div class="confirm">
+                                <span id="full"  flag="{{ flag }}">
+                                    <span id="rightFull">
+                                        {% ifequal flag "1" %}
+                                            √
+                                        {% endifequal %}
+                                    </span>
+                                </span>
+                            </div>
+
+                            <p id="fix"><span>全选</span><span>共计:</span><span>总价</span></p>
+                            <a id="ok" href="/addOrder/">选好了</a>
+                        </li>
+                    </ul>
+                </menu>
+            </section>
+        </section>
+    </div>
+{% endblock main %}
+
+

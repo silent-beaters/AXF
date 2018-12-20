@@ -1,0 +1,37 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block title %}地址{% endblock title %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'mine/css/showAddress.css' %}">
+{% endblock link %}
+{% block script %}
+<script type="application/javascript" src="{% static 'mine/js/showAddress.js' %}"></script>
+{% endblock script %}
+
+{% block h4  %}显示所有地址{% endblock h4 %}
+
+{% block main %}
+<div id="showAddressDiv">
+    <a href="/mine/" class=" glyphicon glyphicon-chevron-left ">返回上级</a>
+
+    <div>
+        <ul>
+            {% for item in addresses %}
+            <li style="border-bottom: solid 1px red">
+                <div>
+                    <p>收件人:{{ item.name }}</p>
+                    <p>联系电话:{{ item.phone }}</p>
+                    <p>详细地址:{{ item.fullAddress }}</p>
+                </div>
+                <div><p><a href="/changeAddress/?addressid={{ item.id }}" class="glyphicon glyphicon-wrench">修改</a></p></div>
+            </li>
+            {% endfor %}
+            <hr>
+        </ul>
+    </div>
+
+    <a href="/addAddress/" class="glyphicon glyphicon-plus-sign">新增地址</a>
+
+</div>
+{% endblock main %}

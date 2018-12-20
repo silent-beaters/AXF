@@ -1,0 +1,34 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block title %}已支付{% endblock title %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'mine/css/havePay.css' %}">
+{% endblock link %}
+{% block script %}
+<script type="application/javascript" src="{% static 'mine/js/havePay.js' %}"></script>
+{% endblock script %}
+
+
+{% block h4 %}待收货{% endblock h4 %}
+{% block main %}
+
+<div id="havePayDiv">
+    <a href="/mine/" class=" glyphicon glyphicon-chevron-left ">返回</a>
+    <div>
+        <ul>
+            {% for item in orders %}
+            <li style="border-bottom: solid 1px red">
+                <div>
+                    <p>订单流水: {{ item.orderid }}</p>
+                    <p>创建订单时间: {{ item.createTime }}</p>
+                    <p>订单总价: {{ item.price }}元</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+</div>
+{% endblock main %}

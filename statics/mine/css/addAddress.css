@@ -1,0 +1,13 @@
+#addAddressDiv {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+  background: whitesmoke;
+  overflow: hidden;
+  margin-top: 32px;
+}
+#addAddressDiv a:first-child{
+  position: fixed;
+  margin: 15px 0 0 10px;
+}

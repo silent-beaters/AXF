@@ -1,0 +1,82 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block title %}闪送超市{% endblock title %}
+
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'market/css/market.css' %}">
+{% endblock link %}
+{% block h4 %}闪送超市{% endblock h4 %}
+{% block script %}
+    <script type="text/javascript" src="{% static 'market/js/market.js' %}"></script>
+{% endblock script %}
+
+{% block main %}
+    <div id="marketDiv">
+        <div class="col-xs-3" id="leftDiv">
+            <ul>
+                {% for item in categories %}
+                    <li>
+                        <span id="yellow{{ item.id }}"></span>
+                        <a href="/market/{{ item.id }}/0/0/">{{ item.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+
+
+        <div class="col-xs-9" id="rightDiv">
+            <div class="container-fluid" id="topDiv">
+                <a href="#"><div id="typeBtn" class="col-xs-6"><span>全部分类<span class="glyphicon glyphicon-triangle-bottom"></span></span></div></a>
+                <a href="#"><div id="sortBtn" class="col-xs-6"><span>综合排序<span class="glyphicon glyphicon-triangle-bottom"></span></span></div></a>
+            </div>
+
+            <div id="bottomDiv">
+                <ul>
+                    {% for item in products %}
+                        <li>
+                            <a href="#">
+                                <div id="liLeftDiv">
+                                    <img src="{{ item.img }}">
+                                </div>
+                                <div id="liRightDiv">
+                                    <h5>{{ item.name }}</h5>
+                                    <P>{{ item.specifics }}</P>
+                                    <P>
+                                        <span>{{ item.price }}</span>
+                                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        {% if item.price < item.marketPrice %}
+                                            <s>{{ item.marketPrice }}</s>
+                                        {% endif %}
+                                    </P>
+                                </div>
+                            </a>
+                            <div>
+                                <button num="-1" pid="{{ item.id }}" class="subBtn">-</button>
+                                <span id="product{{ item.id }}">{{ item.num|default:0 }}</span>
+                                <button num="1" pid="{{ item.id }}" class="addBtn">+</button>
+                            </div>
+
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div id="typeDiv">
+                    <div>
+                        <a href="/market/{{ gid }}/0/0/"><span id="type0">全部分类</span></a>
+                        {% for item in childs %}
+                            <a href="/market/{{ gid }}/{{ item.id }}/0/"><span id="type{{ item.id }}">{{ item.name }}</span></a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div id="sortDiv">
+                    <div>
+                        <a href="/market/{{ gid }}/{{ cid }}/0/"><span id="sort0">综合排序</span></a>
+                        <a href="/market/{{ gid }}/{{ cid }}/1/"><span id="sort1">销量最高</span></a>
+                        <a href="/market/{{ gid }}/{{ cid }}/2/"><span id="sort2">价格最低</span></a>
+                        <a href="/market/{{ gid }}/{{ cid }}/3/"><span id="sort3">价格最高</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}
