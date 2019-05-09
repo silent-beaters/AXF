@@ -187,8 +187,8 @@ def pay(reqeust):
         out_trade_no=orderid,
         total_amount=order.price,
         subject="闪零小分队",
-        return_url="http://47.95.201.86:8000/orderPayOver/",
-        notify_url="http://47.95.201.86:8000/home"
+        return_url="http://39.105.32.156:8000/orderPayOver/",
+        notify_url="http://39.105.32.156:8000/home"
     )
 
 
